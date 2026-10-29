@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars and adjust. NEVER commit terraform.tfvars.
+proxmox_endpoint  = "https://192.168.10.10:8006/"
+proxmox_api_token = "terraform@pve!f5=00000000-0000-0000-0000-000000000000"
+proxmox_insecure  = true
+
+proxmox_node_name = "pve"
+vm_id             = 9100
+vm_name           = "bigip-ltm-01"
+
+image_datastore_id = "local"
+image_file_name    = "BIGIP-17.1.2.ALL.qcow2"
+disk_datastore_id  = "local-lvm"
+
+network_bridge = "vmbr0"

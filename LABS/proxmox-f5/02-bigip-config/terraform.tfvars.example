@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars and adjust. NEVER commit terraform.tfvars.
+# Password: preferably via env var  TF_VAR_bigip_password
+bigip_address  = "192.168.10.50"
+bigip_username = "admin"
+
+selfip_cidr = "192.168.10.51/24"
+vip_address = "192.168.10.60"
+vip_port    = 443
+
+pool_members = {
+  "web-01" = "192.168.10.71"
+  "web-02" = "192.168.10.72"
+}
+pool_member_port = 80
