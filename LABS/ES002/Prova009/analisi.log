@@ -1,0 +1,79 @@
+
+Result #1 CRITICAL Vault network ACL does not block access by default. 
+────────────────────────────────────────────────────────────────────────────────
+  D:\Temp\GitHub\OVED744-Iac\LABS\ES002\Prova009\modules\security\main.tf:1-19
+   via main.tf:37-45 (module.security)
+────────────────────────────────────────────────────────────────────────────────
+    1  ┌ resource "azurerm_key_vault" "this" {
+    2  │   name                = var.name
+    3  │   location            = var.location
+    4  │   resource_group_name = var.resource_group_name
+    5  │   tenant_id           = var.tenant_id
+    6  │   sku_name            = "standard"
+    7  │ 
+    8  │   rbac_authorization_enabled = true
+    9  └ 
+   ..  
+────────────────────────────────────────────────────────────────────────────────
+          ID azure-keyvault-specify-network-acl
+      Impact Without a network ACL the key vault is freely accessible
+  Resolution Set a network ACL for the key vault
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.1/checks/azure/keyvault/specify-network-acl/
+  - https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault#network_acls
+────────────────────────────────────────────────────────────────────────────────
+
+
+Result #2 MEDIUM Server does not have an extended audit policy configured. 
+────────────────────────────────────────────────────────────────────────────────
+  D:\Temp\GitHub\OVED744-Iac\LABS\ES002\Prova009\modules\database\main.tf:1-13
+   via main.tf:47-62 (module.database)
+────────────────────────────────────────────────────────────────────────────────
+    1  ┌ resource "azurerm_mssql_server" "this" {
+    2  │   name                         = var.name
+    3  │   resource_group_name          = var.resource_group_name
+    4  │   location                     = var.location
+    5  │   version                      = "12.0"
+    6  │   administrator_login          = var.administrator_login
+    7  │   administrator_login_password = var.administrator_password
+    8  │ 
+    9  └   minimum_tls_version           = "1.2"
+   ..  
+────────────────────────────────────────────────────────────────────────────────
+          ID azure-database-enable-audit
+      Impact Auditing provides valuable information about access and usage
+  Resolution Enable auditing on Azure SQL databases
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.1/checks/azure/database/enable-audit/
+  - https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_server#extended_auditing_policy
+────────────────────────────────────────────────────────────────────────────────
+
+
+  timings
+  ──────────────────────────────────────────
+  disk i/o             0s
+  parsing              5.9987ms
+  adaptation           0s
+  checks               3.4471ms
+  total                9.4458ms
+
+  counts
+  ──────────────────────────────────────────
+  modules downloaded   0
+  modules processed    6
+  blocks processed     77
+  files read           20
+
+  results
+  ──────────────────────────────────────────
+  passed               5
+  ignored              0
+  critical             1
+  high                 0
+  medium               1
+  low                  0
+
+  5 passed, 2 potential problem(s) detected.
+

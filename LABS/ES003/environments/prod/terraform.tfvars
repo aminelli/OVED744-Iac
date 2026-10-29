@@ -1,0 +1,18 @@
+environment = "prod"
+location    = "westeurope"
+vm_size     = "Standard_D4s_v5"
+
+admin_username      = "azureadmin"
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+ssh_allowed_cidr    = "203.0.113.10/32"
+
+vnet_address_space    = ["10.40.0.0/16"]
+subnet_address_prefix = "10.40.1.0/24"
+
+os_disk_size_gb = 128
+
+tags = {
+  CostCenter  = "IT-PROD"
+  Owner       = "Operations"
+  Criticality = "High"
+}

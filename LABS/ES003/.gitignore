@@ -1,0 +1,24 @@
+# Terraform working directory
+**/.terraform/*
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Saved plans
+*.tfplan
+*.plan
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local environment files
+.env
+*.secret
